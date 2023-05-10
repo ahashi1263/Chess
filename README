@@ -1,0 +1,46 @@
+DESIGN:
+Piece.h :
+    This is an abstract that all our pieces were derived from and overloaded its relevant functions.
+    Functions:
+        pointValue : returns point value associated to a piece
+        isWhite : returns bool of whether a piece is white or not
+        legalMoveShape: returns true if a piece can move to a stated positions
+        legalCaptureShape: returns true if a piece can capture a piece at a stated position
+        toAscii: Returns char representation of piece
+        toUnicode: Returns unicode represntration of piece
+Board:
+    Members :
+        occ : sparce map of the location of all pieces currently in play
+        whiteKingPosition: location of the white king
+        blackKingPosition: location of the black king
+    Functions:
+        addPiece: Maps a new position to a piece 
+        removePiece: Unmaps a position to a piece
+        (): Returns piece at a position
+        display: prints out the current state of the board
+        has_valid_kings: Returns true if there are 2 kings
+        getKingPositions: Returns position of specified king
+        setKingPosition: Changes position of specified king position
+        begin: Returns Iterator at first board position
+        end: Returns Iterater right after the lasat board position
+    SubClass :
+        Iterator : Iterates over every position on board
+Game:
+    Members:
+        board : Board containing the current game state
+    Functions:
+        turnWhite: Changes the turn of the current player
+        display: Prints out the current state of the board
+        is_valid_game : Returns true if game is valid
+        make_move: Trys to make move if the specified move is valid
+        in_check: Returns true if current player is in check
+        in_check_mate: Return true if current player is in checkmate
+        In_stale_mate: Returns true if current player is still in stalemate  
+        point_value: Reutrns the point value of the pieces at play for the current player
+            Details:          
+                For the point_value implementation we iterated through the board and assigned a position and piece. 
+                Then we made sure that the piece was not a null pointer for either the black or white player. 
+                Then we kept a running total that was easily agumented when a a piece is removed/captured.
+
+COMPLETENESS:
+Fully complete and functional.
